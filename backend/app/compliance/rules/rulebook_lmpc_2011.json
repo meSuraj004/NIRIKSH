@@ -1,0 +1,221 @@
+{
+  "rulebook_id": "LMPC-RULES-2011",
+  "title": "Legal Metrology (Packaged Commodities) Rules, 2011 - Statutory Compliance Rulebook",
+  "version": "2011.amended.2023",
+  "jurisdiction": "India",
+  "governing_body": "Ministry of Consumer Affairs, Food and Public Distribution, Department of Consumer Affairs, Government of India",
+  "governing_act": "The Legal Metrology Act, 2009 (1 of 2010)",
+  "rules": [
+    {
+      "rule_id": "LMPC-2011-R6-1-E-MRP",
+      "rule_title": "Maximum Retail Price (MRP) Declaration",
+      "legal_act": "Legal Metrology (Packaged Commodities) Rules, 2011",
+      "section_reference": "Rule 6(1)(e), Rule 2(m)",
+      "parameter": "mrp",
+      "description": "Every package shall bear a clear declaration of the retail sale price indicating that it is the Maximum Retail Price inclusive of all taxes, with the price in rupees and paise rounded off to the nearest rupee or 50 paise.",
+      "applicability": "ALL_PACKAGED_COMMODITIES",
+      "mandatory": true,
+      "exemptions": [
+        "Commodities with quantity > 25 kg or > 25 litre (Rule 3(a))",
+        "Packages containing bidi (Rule 6(1)(g) Proviso C(i))",
+        "Domestic LPG cylinders covered under Administrative Price Mechanism (Rule 6(1)(g) Proviso C(ii))",
+        "Packaged commodities meant for industrial/institutional consumers (Rule 3(c))"
+      ],
+      "sub_checks": [
+        {
+          "sub_check_id": "MRP-PRESENCE",
+          "name": "MRP Declaration Presence",
+          "description": "Retail sale price / MRP declaration must exist on the package label.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MRP_MISSING",
+          "failure_reason": "No Maximum Retail Price (MRP) declaration was found on the package label.",
+          "remediation": "Print a clear retail sale price declaration on the principal display panel or package label."
+        },
+        {
+          "sub_check_id": "MRP-PREFIX",
+          "name": "Statutory MRP Terminology/Prefix",
+          "description": "Declaration must use standard legally recognized prefixes such as 'MRP', 'M.R.P.', 'Maximum Retail Price', 'Max. Retail Price', 'Max Retail Price', or 'Maximum Retail Price (MRP)'.",
+          "mandatory": true,
+          "severity": "MAJOR",
+          "error_code": "ERR_MRP_INVALID_PREFIX",
+          "failure_reason": "The price declaration lacks the mandatory qualifying prefix 'MRP' or 'Maximum Retail Price'.",
+          "remediation": "Prefix the price with 'MRP' or 'Maximum Retail Price' / 'Max. retail price' as illustrated in Rule 6(1)(e)."
+        },
+        {
+          "sub_check_id": "MRP-TAX-INCLUSION",
+          "name": "Inclusive of All Taxes Declaration",
+          "description": "Price must explicitly state '(inclusive of all taxes)', 'inclusive of all taxes', 'incl. of all taxes', or '(incl. of all taxes)'.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MRP_MISSING_TAX_DECLARATION",
+          "failure_reason": "The price declaration does not mention '(incl. of all taxes)' or 'inclusive of all taxes' as required by Rule 6(1)(e).",
+          "remediation": "Append '(incl. of all taxes)' or 'inclusive of all taxes' to the retail sale price declaration."
+        },
+        {
+          "sub_check_id": "MRP-CURRENCY-INDICATOR",
+          "name": "Valid Currency Symbol/Representation",
+          "description": "The price must specify the Indian currency using the Indian Rupee symbol '₹', 'Rs.', 'Rs', or 'INR'.",
+          "mandatory": true,
+          "severity": "MAJOR",
+          "error_code": "ERR_MRP_INVALID_CURRENCY",
+          "failure_reason": "The retail sale price does not contain a recognized Indian currency symbol (₹, Rs., Rs, or INR).",
+          "remediation": "Include the Rupee symbol '₹' or 'Rs.' before the numerical amount."
+        },
+        {
+          "sub_check_id": "MRP-NUMERIC-VALUE",
+          "name": "Positive Non-Zero Numerical Price",
+          "description": "The declared price must contain a positive numeric value greater than zero, with valid decimal formatting.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MRP_INVALID_NUMERIC",
+          "failure_reason": "The declared MRP amount is zero, negative, or could not be parsed as a valid numeric amount.",
+          "remediation": "Ensure a positive, valid numerical price is declared (e.g. ₹ 30.00)."
+        },
+        {
+          "sub_check_id": "MRP-ROUNDING",
+          "name": "Price Rounding Compliance",
+          "description": "Price in rupees and paise should be rounded off to the nearest rupee or 50 paise as per Rule 6(1)(e).",
+          "mandatory": false,
+          "severity": "WARNING",
+          "error_code": "WARN_MRP_ROUNDING",
+          "failure_reason": "Price in paise is not rounded off to the nearest rupee or 50 paise.",
+          "remediation": "Round off paise to the nearest 50 paise or integer rupee."
+        },
+        {
+          "sub_check_id": "MRP-UNIT-SALE-PRICE",
+          "name": "Unit Sale Price (USP) Declaration",
+          "description": "Declaration of Unit Sale Price (e.g., per g, per kg, per ml, per litre, per piece) rounded off to two decimal places (Rule 6(11) / Rule 6(1)(e) amendments).",
+          "mandatory": false,
+          "severity": "MAJOR",
+          "error_code": "WARN_USP_MISSING_OR_INVALID",
+          "failure_reason": "Unit Sale Price (USP) is missing or improperly formatted for multi-unit/weight-declared commodity.",
+          "remediation": "Declare the Unit Sale Price in '₹ xx.xx PER ML/G/KG/PIECE' rounded off to two decimal places."
+        }
+      ]
+    },
+    {
+      "rule_id": "LMPC-2011-R6-1-D-MFG",
+      "rule_title": "Month and Year of Manufacture, Packing, or Import",
+      "legal_act": "Legal Metrology (Packaged Commodities) Rules, 2011",
+      "section_reference": "Rule 6(1)(d), Explanation I to Rule 6",
+      "parameter": "manufacture_date",
+      "description": "Every package shall bear the month and year in which the commodity is manufactured, pre-packed, or imported. It may be expressed in words, numerals, or both.",
+      "applicability": "ALL_PACKAGED_COMMODITIES",
+      "mandatory": true,
+      "exemptions": [
+        "Packages containing bidi or incense sticks (Rule 6(1)(g) Proviso A(i))",
+        "Domestic LPG cylinders of 14.2kg or 5kg bottled and marketed by PSU (Rule 6(1)(g) Proviso A(ii))",
+        "Seeds certified under Seeds Act, 1966 (Rule 6(1)(d) Second Proviso)"
+      ],
+      "sub_checks": [
+        {
+          "sub_check_id": "MFG-PRESENCE",
+          "name": "Manufacturing/Packing Date Declaration Presence",
+          "description": "The date or month/year of manufacture, packing, or import must be declared on the package.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MFG_DATE_MISSING",
+          "failure_reason": "No date of manufacture, packing, or import was found on the package label.",
+          "remediation": "Declare the month and year of manufacture or pre-packing (e.g. MFD: 15/06/2026 or 06/2026)."
+        },
+        {
+          "sub_check_id": "MFG-PREFIX",
+          "name": "Manufacturing/Packing Qualifying Prefix",
+          "description": "The declaration should be qualified with standard prefixes such as 'MFD', 'Mfg Date', 'Date of Mfg', 'Packed on', 'PKD', 'Date of Packing', 'Imported on', or 'Month and Year of Manufacture'.",
+          "mandatory": true,
+          "severity": "MAJOR",
+          "error_code": "ERR_MFG_PREFIX_MISSING",
+          "failure_reason": "Date is not clearly identified as the date of manufacture, packing, or import.",
+          "remediation": "Use standard qualifiers like 'MFD:', 'Mfg Date:', 'PKD:', or 'Packed on:' before the date."
+        },
+        {
+          "sub_check_id": "MFG-DATE-FORMAT",
+          "name": "Standard Month and Year Format",
+          "description": "The declaration must specify at minimum the month and year (e.g. MM/YYYY, MM/YY, Month YYYY, Mon-YY) or exact date (DD/MM/YYYY, DD/MM/YY).",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MFG_INVALID_DATE_FORMAT",
+          "failure_reason": "The manufacturing date format could not be parsed into a valid month and year.",
+          "remediation": "Format the date as DD/MM/YYYY, MM/YYYY, or Month-YYYY."
+        },
+        {
+          "sub_check_id": "MFG-TEMPORAL-PLAUSIBILITY",
+          "name": "Temporal Plausibility (Not Distant Future)",
+          "description": "The manufacturing date cannot be unreasonably far in the future beyond acceptable packaging lead time buffer (3 months).",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_MFG_FUTURE_DATE",
+          "failure_reason": "The declared manufacturing date is in the far future beyond standard lead-time allowances.",
+          "remediation": "Ensure the manufacturing date accurately reflects the actual production or pre-packing date."
+        }
+      ]
+    },
+    {
+      "rule_id": "LMPC-2011-R6-1-DA-EXP",
+      "rule_title": "Best Before or Use By / Expiry Date for Perishable / Consumable Commodities",
+      "legal_act": "Legal Metrology (Packaged Commodities) Rules, 2011",
+      "section_reference": "Rule 6(1)(da), Explanation 1(a), 1(b)",
+      "parameter": "expiry_date",
+      "description": "If a package contains a commodity which may become unfit for human consumption after a period of time, the 'best before or use by the date, month and year' shall also be mentioned on the label.",
+      "applicability": "CONSUMABLES_PERISHABLES_FOOD_BEVERAGES_COSMETICS",
+      "mandatory": true,
+      "exemptions": [
+        "Non-consumable / non-perishable goods (e.g. books, stationery, hardware, electronics, apparel) where commodity does not deteriorate over time.",
+        "Commodities with indefinite shelf life as exempted by Food Safety or other special statutes."
+      ],
+      "sub_checks": [
+        {
+          "sub_check_id": "EXP-APPLICABILITY",
+          "name": "Consumable / Perishable Commodity Evaluation",
+          "description": "Determines whether the product is a consumable/perishable good (food, beverage, dairy, pharmaceutical, cosmetic, chemical with shelf-life).",
+          "mandatory": true,
+          "severity": "INFO",
+          "error_code": "INFO_EXP_APPLICABILITY",
+          "failure_reason": "Evaluates applicability condition for expiry declaration.",
+          "remediation": "N/A"
+        },
+        {
+          "sub_check_id": "EXP-PRESENCE",
+          "name": "Expiry / Best Before Declaration Presence",
+          "description": "For consumable commodities, an Expiry Date ('EXP'), 'Use By Date', or 'Best Before' declaration must be present.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_EXPIRY_DATE_MISSING",
+          "failure_reason": "Consumable / perishable product lacks mandatory 'Expiry Date', 'Use By Date', or 'Best Before' declaration.",
+          "remediation": "Declare 'Best Before', 'Use By Date', or 'Expiry Date' with date, month, and year."
+        },
+        {
+          "sub_check_id": "EXP-DATE-FORMAT",
+          "name": "Valid Expiry Date or Period Specification",
+          "description": "Expiry must be formatted as a valid calendar date (DD/MM/YYYY, MM/YYYY, DD/MM/YY) or explicit period statement ('Best before X months from manufacture/pkd').",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_EXPIRY_INVALID_FORMAT",
+          "failure_reason": "Expiry declaration could not be parsed into a valid date or duration format.",
+          "remediation": "State expiry clearly as DD/MM/YYYY, MM/YYYY, or 'Best before X months from packaging'."
+        },
+        {
+          "sub_check_id": "EXP-CHRONOLOGICAL-CONSISTENCY",
+          "name": "Chronological Consistency (Expiry >= Mfg Date)",
+          "description": "The Expiry / Best Before date must be chronologically on or after the Date of Manufacture / Packing.",
+          "mandatory": true,
+          "severity": "CRITICAL",
+          "error_code": "ERR_EXPIRY_BEFORE_MFG",
+          "failure_reason": "The declared Expiry Date precedes the Date of Manufacture, which is a critical logical contradiction.",
+          "remediation": "Verify and correct the expiry date so it occurs after the date of manufacture."
+        },
+        {
+          "sub_check_id": "EXP-SHELF-LIFE-INTERVAL",
+          "name": "Reasonable Shelf Life Duration",
+          "description": "The computed shelf life between manufacturing date and expiry date must be positive and within reasonable bounds for the commodity category.",
+          "mandatory": false,
+          "severity": "WARNING",
+          "error_code": "WARN_IMPLAUSIBLE_SHELF_LIFE",
+          "failure_reason": "The declared shelf life interval is excessively long (>10 years) or 0 days.",
+          "remediation": "Ensure the shelf life declared is realistic for the product category."
+        }
+      ]
+    }
+  ]
+}

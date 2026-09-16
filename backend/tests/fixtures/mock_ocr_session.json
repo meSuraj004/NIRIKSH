@@ -1,0 +1,346 @@
+{
+  "session_id": "session_20260828_192205",
+  "timestamp": "20260828_192205",
+  "total_images_processed": 2,
+  "total_pipeline_time_sec": 13.21,
+  "per_image_results": [
+    {
+      "view_index": 1,
+      "source_path": "D:\\CODE\\Python 311\\SIH\\captured_objects\\book_20260826_122519_enhanced.png",
+      "source_type": "view_1",
+      "resolution_original": [
+        1106,
+        1272
+      ],
+      "resolution_processed": [
+        2212,
+        2544
+      ],
+      "detection": {
+        "detected": false,
+        "reason": "No object detected",
+        "box": [
+          0,
+          0,
+          1106,
+          1272
+        ]
+      },
+      "quality": {
+        "sharpness_score": 844.4,
+        "is_sharp": true,
+        "lighting_status": "GOOD",
+        "mean_brightness": 141.4
+      },
+      "saved_color_path": "captured_objects\\view_1_product_20260828_192207_135_color.png",
+      "saved_ocr_path": "captured_objects\\view_1_product_20260828_192207_135_ocr.png",
+      "ocr_latency_sec": 3.2,
+      "ocr_total_lines": 29,
+      "token_usage": {
+        "prompt_tokens": 1504,
+        "completion_tokens": 466,
+        "total_tokens": 1970
+      },
+      "text_lines": [
+        "MANUFACTURED BY: PARLE AGRO PVT. LTD.",
+        "OFF WESTERN EXPRESS HIGHWAY,",
+        "SAHAR-CHAKALA ROAD, PARSHIMADA,",
+        "ANDHERI (EAST), MUMBAI - 400 099, MAHARASHTRA.",
+        "fssat",
+        "Lic. No.10013022002068",
+        "MANUFACTURING UNIT: PARLE AGRO PVT. LTD.",
+        "MANDIDEEP - 482 048, MADHYA PRADESH.",
+        "fssat",
+        "Lic. No.100120226000060",
+        "EMAIL US: CONSUMERCELL@PARLEAGRO.COM",
+        "VISIT US: WWW.PARLEAGRO.COM, OR WRITE TO US AT MUMBAI ADDRESS",
+        "CALL OUR EXECUTIVE: 1800 266 4448",
+        "MRP ₹ 30.00 (INCL. OF ALL TAXES), UNIT SALE PRICE PER ML ₹ 0.12",
+        "FOR MFG. DATE, USE BY DATE AND LOT NO. REFER TO BODY.",
+        "TASTES BEST WHEN CHILLED. STORE IN A COOL, DRY & HYGIENIC PLACE,",
+        "AWAY FROM DIRECT SUNLIGHT. DON'T BUY IF THE BOTTLE IS PUFFED OR",
+        "LEAKING OR SEAL IS BROKEN. CRUSH THE BOTTLE AFTER USE.",
+        "\"SMOOGIE\" IS THE REGISTERED TRADEMARK OF PARLE AGRO PVT. LTD.",
+        "WARNING: COMMERCIAL EXPORT OF THIS PACK IS STRICTLY PROHIBITED,",
+        "AND I-2 LIABLE FOR PROSECUTION.",
+        "FSSAI REGISTRATION NO. BO-13-000-07-AAACP846-22",
+        "RECYCLE VALUE ₹ 1.00 FOR 8 BOTTLES IN MH",
+        "*IMAGES ARE FOR ILLUSTRATION PURPOSE ONLY",
+        "KEEP YOUR",
+        "CITY CLEAN",
+        "NET QUANTITY:",
+        "250 ml",
+        "8 902579 004455"
+      ],
+      "full_text": "MANUFACTURED BY: PARLE AGRO PVT. LTD.\nOFF WESTERN EXPRESS HIGHWAY,\nSAHAR-CHAKALA ROAD, PARSHIMADA,\nANDHERI (EAST), MUMBAI - 400 099, MAHARASHTRA.\nfssat\nLic. No.10013022002068\n\nMANUFACTURING UNIT: PARLE AGRO PVT. LTD.\nMANDIDEEP - 482 048, MADHYA PRADESH.\nfssat\nLic. No.100120226000060\n\nEMAIL US: CONSUMERCELL@PARLEAGRO.COM\nVISIT US: WWW.PARLEAGRO.COM, OR WRITE TO US AT MUMBAI ADDRESS\nCALL OUR EXECUTIVE: 1800 266 4448\n\nMRP ₹ 30.00 (INCL. OF ALL TAXES), UNIT SALE PRICE PER ML ₹ 0.12\nFOR MFG. DATE, USE BY DATE AND LOT NO. REFER TO BODY.\n\nTASTES BEST WHEN CHILLED. STORE IN A COOL, DRY & HYGIENIC PLACE,\nAWAY FROM DIRECT SUNLIGHT. DON'T BUY IF THE BOTTLE IS PUFFED OR\nLEAKING OR SEAL IS BROKEN. CRUSH THE BOTTLE AFTER USE.\n\n\"SMOOGIE\" IS THE REGISTERED TRADEMARK OF PARLE AGRO PVT. LTD.\nWARNING: COMMERCIAL EXPORT OF THIS PACK IS STRICTLY PROHIBITED,\nAND I-2 LIABLE FOR PROSECUTION.\nFSSAI REGISTRATION NO. BO-13-000-07-AAACP846-22\nRECYCLE VALUE ₹ 1.00 FOR 8 BOTTLES IN MH\n*IMAGES ARE FOR ILLUSTRATION PURPOSE ONLY\n\nKEEP YOUR\nCITY CLEAN\n\nNET QUANTITY:\n250 ml\n\n8 902579 004455"
+    },
+    {
+      "view_index": 2,
+      "source_path": "D:\\CODE\\Python 311\\SIH\\captured_objects\\bottle_20260826_122439_enhanced.png",
+      "source_type": "view_2",
+      "resolution_original": [
+        960,
+        1422
+      ],
+      "resolution_processed": [
+        1920,
+        2844
+      ],
+      "detection": {
+        "detected": false,
+        "reason": "No object detected",
+        "box": [
+          0,
+          0,
+          960,
+          1422
+        ]
+      },
+      "quality": {
+        "sharpness_score": 628.7,
+        "is_sharp": true,
+        "lighting_status": "GOOD",
+        "mean_brightness": 140.2
+      },
+      "saved_color_path": "captured_objects\\view_2_product_20260828_192212_221_color.png",
+      "saved_ocr_path": "captured_objects\\view_2_product_20260828_192212_221_ocr.png",
+      "ocr_latency_sec": 2.73,
+      "ocr_total_lines": 32,
+      "token_usage": {
+        "prompt_tokens": 2016,
+        "completion_tokens": 528,
+        "total_tokens": 2544
+      },
+      "text_lines": [
+        "15/06/26 07:20:52",
+        "BN BHP26166 ₹30.00",
+        "11/12/26",
+        "*HEAT TREATED ROSE FLAVOURED LASSI",
+        "INGREDIENTS: DOUBLE TONED MILK DAHI (45%) (MILK SOLIDS,",
+        "CULTURE), WATER, SUGAR, STABILIZER (INS 466), ACIDITY REGULATOR",
+        "(INS 330), IODISED SALT AND NATURAL IDENTICAL FLAVOURING",
+        "SUBSTANCE (ROSE).",
+        "(INS-INTERNATIONAL NUMBERING SYSTEM)",
+        "ALLERGEN INFORMATION: CONTAINS MILK",
+        "NUTRITIONAL INFORMATION (TYPICAL VALUES)",
+        "SERVING SIZE: 125ml",
+        "SERVING PER PACK: 2",
+        "                    PER SERVE",
+        "                    PER 100ml  125ml  %RDA**",
+        "ENERGY (kcal)       73.0      92.3    4.6%",
+        "PROTEIN (g)         1.5       1.9     3.5%",
+        "CARBOHYDRATE (g)    16.7      18.4",
+        "TOTAL SUGARS (g)    14.3      17.9",
+        "ADDED SUGARS (g)    10.0      12.5    31.0%",
+        "TOTAL FAT (g)       1.0       1.3     1.9%",
+        "SATURATED FAT (g)   0.7       0.9     4.0%",
+        "TRANS FAT (g)       0.04      0.1     2.5%",
+        "CHOLESTEROL (mg)    3.0       3.0",
+        "SODIUM (mg)         74.1      92.6    4.6%",
+        "CALCIUM (mg)        84.9      88.5    0.9%",
+        "**PERCENT RDA VALUES ARE BASED ON A 2000kcal ENERGY DIET.",
+        "ROSE",
+        "FLAVOURED",
+        "LASSI*",
+        "Parle Agro",
+        "8 901076 52900 4"
+      ],
+      "full_text": "15/06/26 07:20:52\nBN BHP26166 ₹30.00\n\n11/12/26\n\n*HEAT TREATED ROSE FLAVOURED LASSI\n\nINGREDIENTS: DOUBLE TONED MILK DAHI (45%) (MILK SOLIDS,\nCULTURE), WATER, SUGAR, STABILIZER (INS 466), ACIDITY REGULATOR\n(INS 330), IODISED SALT AND NATURAL IDENTICAL FLAVOURING\nSUBSTANCE (ROSE).\n(INS-INTERNATIONAL NUMBERING SYSTEM)\nALLERGEN INFORMATION: CONTAINS MILK\n\nNUTRITIONAL INFORMATION (TYPICAL VALUES)\nSERVING SIZE: 125ml\nSERVING PER PACK: 2\n\n                    PER SERVE\n                    PER 100ml  125ml  %RDA**\nENERGY (kcal)       73.0      92.3    4.6%\nPROTEIN (g)         1.5       1.9     3.5%\nCARBOHYDRATE (g)    16.7      18.4\nTOTAL SUGARS (g)    14.3      17.9\nADDED SUGARS (g)    10.0      12.5    31.0%\nTOTAL FAT (g)       1.0       1.3     1.9%\nSATURATED FAT (g)   0.7       0.9     4.0%\nTRANS FAT (g)       0.04      0.1     2.5%\nCHOLESTEROL (mg)    3.0       3.0\nSODIUM (mg)         74.1      92.6    4.6%\nCALCIUM (mg)        84.9      88.5    0.9%\n\n**PERCENT RDA VALUES ARE BASED ON A 2000kcal ENERGY DIET.\n\nROSE\nFLAVOURED\nLASSI*\n\nParle Agro\n\n8 901076 52900 4"
+    }
+  ],
+  "aggregated_data": {
+    "product_identity": {
+      "brand_name": "Parle Agro",
+      "product_name": "Smoogie",
+      "variant_flavor": "Rose Flavoured Lassi",
+      "category": "Beverage",
+      "vegetarian_status": "Vegetarian"
+    },
+    "manufacturer_and_marketer": {
+      "manufactured_by": "PARLE AGRO PVT. LTD.",
+      "manufacturing_address": "OFF WESTERN EXPRESS HIGHWAY, SAHAR-CHAKALA ROAD, PARSHIMADA, ANDHERI (EAST), MUMBAI - 400 099, MAHARASHTRA. / MANDIDEEP - 482 048, MADHYA PRADESH.",
+      "marketed_by": null,
+      "packed_by": null,
+      "imported_by": null,
+      "country_of_origin": "India"
+    },
+    "dates_and_batch": {
+      "mfg_date": "15/06/26",
+      "exp_date": "11/12/26",
+      "best_before": null,
+      "batch_number": "BHP26166",
+      "lot_number": null
+    },
+    "pricing_and_quantity": {
+      "mrp": "₹ 30.00 (INCL. OF ALL TAXES)",
+      "mrp_numerical_inr": 30.0,
+      "net_quantity": "250 ml",
+      "unit_sale_price": "₹ 0.12 PER ML",
+      "gross_weight": null
+    },
+    "ingredients_and_allergens": {
+      "ingredients_list": [
+        "DOUBLE TONED MILK DAHI (45%) (MILK SOLIDS, CULTURE)",
+        "WATER",
+        "SUGAR",
+        "STABILIZER (INS 466)",
+        "ACIDITY REGULATOR (INS 330)",
+        "IODISED SALT",
+        "NATURAL IDENTICAL FLAVOURING SUBSTANCE (ROSE)"
+      ],
+      "allergens_declared": [
+        "MILK"
+      ],
+      "food_additives_and_ins": [
+        "INS 466",
+        "INS 330"
+      ]
+    },
+    "nutritional_information": {
+      "serving_size": "125ml",
+      "servings_per_pack": "2",
+      "nutrients": [
+        {
+          "name": "Energy",
+          "per_100g_or_ml": "73.0 kcal",
+          "per_serving": "92.3 kcal",
+          "rda_percentage": "4.6%"
+        },
+        {
+          "name": "Protein",
+          "per_100g_or_ml": "1.5 g",
+          "per_serving": "1.9 g",
+          "rda_percentage": "3.5%"
+        },
+        {
+          "name": "Carbohydrate",
+          "per_100g_or_ml": "16.7 g",
+          "per_serving": "18.4 g",
+          "rda_percentage": null
+        },
+        {
+          "name": "Total Sugars",
+          "per_100g_or_ml": "14.3 g",
+          "per_serving": "17.9 g",
+          "rda_percentage": null
+        },
+        {
+          "name": "Added Sugars",
+          "per_100g_or_ml": "10.0 g",
+          "per_serving": "12.5 g",
+          "rda_percentage": "31.0%"
+        },
+        {
+          "name": "Total Fat",
+          "per_100g_or_ml": "1.0 g",
+          "per_serving": "1.3 g",
+          "rda_percentage": "1.9%"
+        },
+        {
+          "name": "Saturated Fat",
+          "per_100g_or_ml": "0.7 g",
+          "per_serving": "0.9 g",
+          "rda_percentage": "4.0%"
+        },
+        {
+          "name": "Trans Fat",
+          "per_100g_or_ml": "0.04 g",
+          "per_serving": "0.1 g",
+          "rda_percentage": "2.5%"
+        },
+        {
+          "name": "Cholesterol",
+          "per_100g_or_ml": "3.0 mg",
+          "per_serving": "3.0 mg",
+          "rda_percentage": null
+        },
+        {
+          "name": "Sodium",
+          "per_100g_or_ml": "74.1 mg",
+          "per_serving": "92.6 mg",
+          "rda_percentage": "4.6%"
+        },
+        {
+          "name": "Calcium",
+          "per_100g_or_ml": "84.9 mg",
+          "per_serving": "88.5 mg",
+          "rda_percentage": "0.9%"
+        }
+      ]
+    },
+    "regulatory_and_certifications": {
+      "fssai_license_number": "10013022002068",
+      "fssai_logo_present": true,
+      "other_certifications": [],
+      "statutory_warnings": [
+        "WARNING: COMMERCIAL EXPORT OF THIS PACK IS STRICTLY PROHIBITED, AND I-2 LIABLE FOR PROSECUTION.",
+        "DON'T BUY IF THE BOTTLE IS PUFFED OR LEAKING OR SEAL IS BROKEN.",
+        "CRUSH THE BOTTLE AFTER USE."
+      ],
+      "storage_instructions": "TASTES BEST WHEN CHILLED. STORE IN A COOL, DRY & HYGIENIC PLACE, AWAY FROM DIRECT SUNLIGHT.",
+      "usage_instructions": null
+    },
+    "consumer_care": {
+      "email": "CONSUMERCELL@PARLEAGRO.COM",
+      "phone": "1800 266 4448",
+      "address": "MUMBAI ADDRESS (OFF WESTERN EXPRESS HIGHWAY, SAHAR-CHAKALA ROAD, PARSHIMADA, ANDHERI (EAST), MUMBAI - 400 099, MAHARASHTRA)",
+      "website": "WWW.PARLEAGRO.COM"
+    },
+    "compliance_summary": {
+      "detected_mandatory_fields": [
+        "Brand Name",
+        "Product Name",
+        "Net Quantity",
+        "MRP",
+        "Ingredients",
+        "Nutritional Information",
+        "Manufacturer Details",
+        "FSSAI License Number",
+        "Manufacturing Date",
+        "Expiry Date",
+        "Batch Number",
+        "Allergen Information",
+        "Storage Instructions"
+      ],
+      "missing_or_unclear_fields": [
+        "Gross Weight",
+        "Specific Lot Number (Batch provided instead)"
+      ],
+      "data_completeness_percentage": 95
+    }
+  },
+  "markdown_report": "# 📦 Product Compliance & Label Analysis: Smoogie\n\n## 1. 🏷️ Product Overview & Identity\n- **Brand Name**: Parle Agro\n- **Product Name**: Smoogie\n- **Variant / Flavor**: Rose Flavoured Lassi\n- **Category**: Beverage\n- **Vegetarian Status**: Vegetarian\n\n## 2. 💰 Pricing, Net Quantity & Weights\n- **Maximum Retail Price (MRP)**: ₹ 30.00 (INCL. OF ALL TAXES)\n- **Net Quantity / Volume**: 250 ml\n- **Unit Sale Price (USP)**: ₹ 0.12 PER ML\n\n## 3. 📅 Dates & Batch Declarations\n- **Date of Manufacture (MFD)**: 15/06/26\n- **Expiry Date (EXP) / Use By**: 11/12/26\n- **Best Before**: N/A\n- **Batch / Lot No.**: BHP26166\n\n## 4. 🏭 Manufacturer & Marketer Details\n- **Manufactured By**: PARLE AGRO PVT. LTD.\n- **Manufacturing Address**: OFF WESTERN EXPRESS HIGHWAY, SAHAR-CHAKALA ROAD, PARSHIMADA, ANDHERI (EAST), MUMBAI - 400 099, MAHARASHTRA. / MANDIDEEP - 482 048, MADHYA PRADESH.\n- **Country of Origin**: India\n\n## 5. 🥗 Ingredients & Allergens\n- **Ingredients List**: DOUBLE TONED MILK DAHI (45%) (MILK SOLIDS, CULTURE), WATER, SUGAR, STABILIZER (INS 466), ACIDITY REGULATOR (INS 330), IODISED SALT, NATURAL IDENTICAL FLAVOURING SUBSTANCE (ROSE)\n- ⚠️ **Allergen Advice**: MILK\n- **Food Additives & INS**: INS 466, INS 330\n\n## 6. 📊 Nutritional Information\n*Serving Size: 125ml | Servings Per Pack: 2*\n\n| Nutrient | Per 100g/ml | Per Serving | % RDA |\n| :--- | :---: | :---: | :---: |\n| Energy | 73.0 kcal | 92.3 kcal | 4.6% |\n| Protein | 1.5 g | 1.9 g | 3.5% |\n| Carbohydrate | 16.7 g | 18.4 g | - |\n| Total Sugars | 14.3 g | 17.9 g | - |\n| Added Sugars | 10.0 g | 12.5 g | 31.0% |\n| Total Fat | 1.0 g | 1.3 g | 1.9% |\n| Saturated Fat | 0.7 g | 0.9 g | 4.0% |\n| Trans Fat | 0.04 g | 0.1 g | 2.5% |\n| Cholesterol | 3.0 mg | 3.0 mg | - |\n| Sodium | 74.1 mg | 92.6 mg | 4.6% |\n| Calcium | 84.9 mg | 88.5 mg | 0.9% |\n\n## 7. ⚖️ Regulatory, FSSAI & Certifications\n- **FSSAI License No.**: 10013022002068\n- **FSSAI Logo**: Present\n- **Mandatory Warnings**: WARNING: COMMERCIAL EXPORT OF THIS PACK IS STRICTLY PROHIBITED, AND I-2 LIABLE FOR PROSECUTION., DON'T BUY IF THE BOTTLE IS PUFFED OR LEAKING OR SEAL IS BROKEN., CRUSH THE BOTTLE AFTER USE.\n- **Storage Instructions**: TASTES BEST WHEN CHILLED. STORE IN A COOL, DRY & HYGIENIC PLACE, AWAY FROM DIRECT SUNLIGHT.\n\n## 8. 📞 Consumer Care & Contact\n- **Email**: CONSUMERCELL@PARLEAGRO.COM\n- **Helpline / Phone**: 1800 266 4448\n- **Website**: WWW.PARLEAGRO.COM\n\n## 9. 📋 Compliance Completeness Summary\n- **Overall Data Completeness**: **95%**\n- **Detected Mandatory Fields (13)**: Brand Name, Product Name, Net Quantity, MRP, Ingredients, Nutritional Information, Manufacturer Details, FSSAI License Number, Manufacturing Date, Expiry Date, Batch Number, Allergen Information, Storage Instructions\n- ⚠️ **Missing / Unclear Fields (2)**: Gross Weight, Specific Lot Number (Batch provided instead)",
+  "aggregator_meta": {
+    "model_used": "qwen/qwen3.8-27b",
+    "latency_sec": 3.75,
+    "token_usage": {
+      "prompt_tokens": 2019,
+      "completion_tokens": 1683,
+      "total_tokens": 3702
+    }
+  },
+  "key_manager_status": [
+    {
+      "index": 1,
+      "key_masked": "gsk_mZfN...EXgX",
+      "status": "ACTIVE",
+      "cooldown_left_sec": 0.0,
+      "stats": {
+        "calls": 2,
+        "rate_limits": 0,
+        "errors": 0
+      }
+    },
+    {
+      "index": 2,
+      "key_masked": "gsk_a2HP...NVqY",
+      "status": "ACTIVE",
+      "cooldown_left_sec": 0.0,
+      "stats": {
+        "calls": 1,
+        "rate_limits": 0,
+        "errors": 0
+      }
+    }
+  ]
+}

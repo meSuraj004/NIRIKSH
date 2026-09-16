@@ -1,0 +1,42 @@
+# Secrets
+.env
+.env.*
+!.env.example
+groq_apis.txt
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Node
+node_modules/
+.next/
+frontend/.env*
+!frontend/.env.example
+
+# Runtime data
+backend/storage/
+storage/
+*.db
+*.sqlite3
+
+# Model weights (large binaries)
+*.pt
+*.onnx
+
+# Test / eval artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

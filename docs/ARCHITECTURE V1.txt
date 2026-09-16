@@ -1,0 +1,211 @@
+# 1\. Product images capture/upload routes :
+
+Scanning the objects details and labels needs to be very reliable and robust. Accurate on top of that.  
+We can have two different approaches for it :
+
+1.  Multiple photos (2-3) from different angles manually captured in the app through the UI interface itself.   
+    PROs : comparatively simpler to build. We can ensure the accuracy in OCR and vision.   
+    CONs : Manual photo capturing needed. Slight hassle but still easier to use.
+2.  Short Video input. A small 5-8 seconds clip of the object slowly rotating for the scan. done through the UI itself.  
+    PROs : Easier to shoot a clip than taking photos from different angles.   
+    CONs : Much harder and complex to build and maintain. Cannot ensure good OCR and accuracy. Hence affecting the overall project performance.   
+                 Video making is still slower than clicking 3 photos from different angles. Definitely not recommended. Much higher room for errors and unreliability.
+
+### Recommended :
+
+Approach 1. Other stages will take more time. spending time on the very first stage is unnecessary and overkill.   
+We will add manually uploading photos nonetheless for convenience.
+
+### Architecture :
+
+- For camera feed, we will use OpenCV. Using an external camera input for better input image quality is a MUST. Mobile can be used as webcam.
+- For Object Detection, we will use nano V8 model of YOLO. It will make detect the bounding box of the target object.
+- Rotation and position of the object is also detected in real time. It is used to guide end-user in capturing image.
+- UI based photo capturing guided for angles and position of the object in frame.
+- All three photos are sent to next OCR and computer vision stage.
+- All images processed simultaneously to avoid delay.
+- All the data extracted sent to the next stage combined under one product id.
+
+&nbsp;
+
+* * *
+
+# 2\. OCR and text extraction stage :
+
+The three captured/uploaded images are processed to reliably extract all visible text, labels, numbers and related information.
+
+## Approach :
+
+1.  **Image preprocessing**
+    
+    - Resize and enhance images using OpenCV.
+        
+    - Improve contrast, sharpness and readability of the image.
+        
+    - Turning the image to grayscale for OCR.
+        
+2.  **Text detection and OCR**
+    
+    - Use **PaddleOCR** for text detection and recognition.
+        
+    - Detect all text regions in each image.
+        
+    - Extract the actual text along with its \*\*bounding box\*\* and confidence score.
+        
+    - Store the coordinates of each detected label/text region for later representation in UI.
+        
+3.  **Multiple-image processing**
+    
+    - Process all three images simultaneously.
+        
+    - Keep OCR results from each image separately.
+        
+    - Combine overlapping/repeated information from different views.
+        
+
+## Architecture :
+
+- Three images received from the previous capture/upload stage.
+    
+- Images preprocessed using OpenCV.
+    
+- Preprocessed images passed to PaddleOCR.
+    
+- OCR extracts text, bounding boxes and confidence scores.
+    
+- Results from all three images are combined.
+    
+- Duplicate/repeated text is removed.
+    
+- Final extracted data is structured under the same **product ID**.
+    
+- Structured OCR data is sent to the next stage.
+    
+
+&nbsp;
+
+* * *
+
+# 3\. Visual and Legal Analysis :
+
+The captured images are processed to extract both the label information and visual properties. The analysis is divided into separate stages to improve accuracy and reliability.
+
+We will have two main analysis pathways :
+
+&nbsp;
+
+1.  **Visual Analysis**
+    
+    - Dedicated analysis of label presentation and layout.
+        
+    - Measurements can be obtained using computer vision (OpenCV) instead of relying entirely on the LLM.
+        
+    - Requires additional computer vision processing for properties such as font size, position and spacing.
+        
+    - Additionally, this collected data can be sent to LLM to process it and output clean structured data. 
+2.  **Legal & Value Analysis** 
+    
+    - Dedicated analysis of regulations, mandatory fields, label values and missing information using OCR + RAG + LLM.
+        
+    - First, we will take the output from OCR.
+        
+    - Then we will combine and process it using fast LLM like Groq API. 
+    - Once we have the structured result of all the data in the captured images, we can run it through our Rule Engine. 
+    - The Rule Engine will test each label and value against the official Legal Regulations Rules 2011
+
+The LLM should not be the only one responsible for directly measuring visual properties. Computer vision will provide measurable evidence, while RAG will provide the applicable legal rules. The LLM will reason over this information and determine compliance.   
+We should also keep the LLM operations as limited as possible as they may increase the delay between capturing and getting result to the user.   
+If any member has a laptop or device with strong GPU, we can run the model on the device as well to minimize the delay and also remove dependency on Internet Availability.
+
+## Architecture :
+
+- All three captured images are processed simultaneously using OCR and computer vision.
+- OCR extracts the text present on the labels along with bounding boxes and text positions.
+- Computer vision extracts visual information such as font size, text position, spacing, alignment, contrast and label layout.
+- Extracted OCR text and product information are passed to the LLM.
+- LLM combines all the input data from different stages and convert it into a clean formatted data structure. 
+- The LLM DOES NOT compares the extracted label information against the retrieved regulations.
+- Legal analysis checks mandatory fields, missing values, incorrect values, required declarations, units, quantities, dates and other regulatory requirements.
+- Visual analysis independently checks the presentation of the label, including font sizes, positioning, spacing, visibility, alignment and other visual requirements.
+- Visual analysis results and legal analysis results are combined under the same product id.
+- A final LLM insight stage combines both results and generates the overall compliance status, violations, warnings, explanations and recommended corrections.
+
+&nbsp;
+
+* * *
+
+# 4\. Rule Engine :
+
+The structured product data generated by the LLM is passed to a **deterministic Rule Engine** for regulatory compliance testing. The LLM will extract and normalize information, but the Rule Engine will be responsible for making the actual PASS / FAIL / REVIEW decisions.
+
+- The Rule Engine will **not contain regulations directly inside the application code**. Rules will be stored as structured data in a **PostgreSQL database**.
+    
+- Each rule will have a unique **Rule ID, version, applicability conditions, required fields, test conditions, severity, legal reference and effective date**.
+    
+- Rules will be represented using a lightweight **JSON-based Rule DSL**, supporting conditions such as `equals`, `exists`, `greater_than`, `less_than`, `contains`, `regex`, logical `AND / OR / NOT`, date comparisons, unit conversions and cross-field comparisons.
+    
+- Before evaluation, the engine will identify only the rules applicable to the product based on **product category, sub-category, jurisdiction, relevant fields and regulation version**, instead of checking every rule.
+    
+- Active rules will be loaded and compiled into memory so that the actual compliance evaluation is fast and does not require repeated database queries.
+    
+- Each rule will return one of four results:
+    
+    - **PASS** — sufficient evidence shows that the requirement is satisfied.
+        
+    - **FAIL** — sufficient evidence shows that the requirement is violated.
+        
+    - **REVIEW** — the available information is uncertain, incomplete or has insufficient OCR/LLM confidence.
+        
+    - **NOT_APPLICABLE** — the rule does not apply to the particular product.
+        
+- The system will distinguish between **ABSENT** information and **UNKNOWN** information. For example, a genuinely missing MRP can result in FAIL, while an unreadable MRP due to poor OCR should result in REVIEW rather than incorrectly failing the product.
+    
+- Every result will retain its **evidence, input value, rule ID, rule version and legal citation**, allowing the system to explain exactly why a particular requirement passed or failed.
+    
+- Regulations and amendments will be **version controlled**. Existing rules will never be overwritten when regulations change. A new rule version will be created with its own `effective_from` and `effective_until` dates.
+    
+- When analysing a product, the engine will automatically select the **regulation/rule version applicable on the relevant assessment date**, allowing old products and historical assessments to remain reproducible.
+    
+- New amendments can be processed through the **RAG → candidate rule → validation → approval → new rule version** pipeline. Human validation can be performed before a new rule becomes active.
+    
+- Each rule will also have predefined **test cases and regression tests**, allowing the system to verify that amendments or rule changes do not unintentionally break existing compliance checks.
+    
+- The Rule Engine will primarily handle **deterministic checks** such as mandatory fields, values, units, dates, quantities, numerical limits and required declarations. Complex semantic checks can invoke a separate LLM-based evaluator and return REVIEW when confidence is insufficient.
+    
+- The final Rule Engine output from all individual checks will be combined under the same **Product ID** and passed to the final insight layer.
+    
+
+## Architecture :
+
+```text
+                 PostgreSQL
+                     │
+        Regulations / Amendments
+                     │
+                     ▼
+               Rule Registry
+                     │
+              Active Rule Set
+                     │
+                     ▼
+              Rule Compiler
+                     │
+              In-Memory Rules
+                     │
+                     ▼
+Clean Product Data ──► Rule Engine
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+      PASS          FAIL        REVIEW
+        │            │            │
+        └────────────┼────────────┘
+                     ▼
+             Evidence + Citation
+                     │
+                     ▼
+             Final Compliance
+                  Insights
+```
+
+The main design principle is to keep the responsibilities separate: **OCR/Vision extracts evidence, the LLM normalizes the evidence, RAG provides the legal knowledge, and the Rule Engine performs deterministic compliance evaluation.** This makes the system faster, explainable, testable and capable of adapting to future regulatory amendments without rewriting the core application.

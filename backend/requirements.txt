@@ -1,0 +1,24 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+email-validator>=2.1.0
+python-multipart>=0.0.9
+python-dotenv>=1.0.1
+
+sqlalchemy>=2.0.30
+psycopg[binary]>=3.2.0; sys_platform != "win32" or python_version < "3.14"
+
+# Auth
+bcrypt>=4.1.0
+PyJWT>=2.8.0
+
+# AI / ML
+groq>=0.9.0
+opencv-python>=4.6.0
+numpy>=1.24.0
+Pillow>=9.5.0
+# torch / torchvision / ultralytics: install separately if YOLO ROI detection is needed.
+# The preprocessor falls back to full-image processing when ultralytics is absent.
+
+httpx>=0.27.0
+pytest>=8.0.0
