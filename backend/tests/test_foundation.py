@@ -6,44 +6,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import StaticPool
-
-from app.database import Base, get_db
-from app.main import app
 from app.models import User, UserRole
-
-
-TestEngine = create_engine(
-    "sqlite://",
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool,
-)
-TestSession = sessionmaker(bind=TestEngine, autoflush=False, expire_on_commit=False)
-Base.metadata.create_all(bind=TestEngine)
-
-
-def override_get_db():
-    db = TestSession()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-app.dependency_overrides[get_db] = override_get_db
-client = TestClient(app)
-
-
-def _signup_and_login(email: str) -> dict:
-    client.post(
-        "/api/auth/signup",
-        json={"email": email, "full_name": "Test Officer", "password": "secure-pass-123"},
-    )
-    res = client.post("/api/auth/login", json={"email": email, "password": "secure-pass-123"})
-    return {"Authorization": f"Bearer {res.json()['access_token']}"}
+from conftest import TestSession, client, signup_and_login as _signup_and_login
 
 
 class TestAuth:
@@ -129,8 +93,7 @@ class TestDeclarationIntegrity:
             "product_identity": {"brand_name": "Acme", "product_name": None},
             "pricing_and_quantity": {"mrp": None, "net_quantity": "500 ml"},
         }
-        evidence = [{"view_index": 0, "text": "Acme product
-Net Quantity 500 ml"}]
+        evidence = [{"view_index": 0, "text": "Acme product Net Quantity 500 ml"}]
         rows = {r["field_name"]: r for r in build_declarations(aggregated, evidence)}
 
         assert rows["product_identity.brand_name"]["value"] == "Acme"

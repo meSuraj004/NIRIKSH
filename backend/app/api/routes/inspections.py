@@ -1,4 +1,6 @@
 from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
+from fastapi.responses import FileResponse
+from pathlib import Path
 from sqlalchemy.orm import Session
 
 from app.auth.dependencies import get_current_user, require_any_role, require_officer
@@ -91,6 +93,23 @@ async def upload_images(
     for image in saved:
         db.refresh(image)
     return saved
+
+
+@router.get("/{inspection_id}/images/{image_id}/file")
+def get_image_file(
+    inspection_id: int,
+    image_id: int,
+    db: Session = Depends(get_db),
+    _: User = Depends(require_any_role),
+):
+    image = db.get(ProductImage, image_id)
+    if image is None or image.inspection_id != inspection_id:
+        raise HTTPException(status_code=404, detail="Image not found")
+    path = Path(image.file_path)
+    if not path.exists():
+        raise HTTPException(status_code=404, detail="Image file missing from storage")
+    media_type = image.content_type or "application/octet-stream"
+    return FileResponse(path, media_type=media_type)
 
 
 @router.post("/{inspection_id}/process", response_model=InspectionOut)

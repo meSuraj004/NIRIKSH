@@ -14,46 +14,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.pool import StaticPool
-
-from app.database import Base, get_db
-from app.main import app
 from app.models import Declaration, Inspection, InspectionStatus
-
-TestEngine = create_engine(
-    "sqlite://",
-    connect_args={"check_same_thread": False},
-    poolclass=StaticPool,
-)
-TestSession = sessionmaker(bind=TestEngine, autoflush=False, expire_on_commit=False)
-Base.metadata.create_all(bind=TestEngine)
-
-
-def override_get_db():
-    db = TestSession()
-    try:
-        yield db
-    finally:
-        db.close()
-
-
-app.dependency_overrides[get_db] = override_get_db
-client = TestClient(app)
+from conftest import TestSession, client
 
 HEADERS = None
 
 
 def setup_module(module):
     global HEADERS
-    client.post(
-        "/api/auth/signup",
-        json={"email": "phase2@example.com", "full_name": "P2", "password": "secure-pass-123"},
-    )
-    res = client.post("/api/auth/login", json={"email": "phase2@example.com", "password": "secure-pass-123"})
-    HEADERS = {"Authorization": f"Bearer {res.json()['access_token']}"}
+    from conftest import signup_and_login
+
+    HEADERS = signup_and_login("phase2@example.com")
 
 
 # --- mocked OCR transcripts (stand in for real Groq Vision OCR output) ---

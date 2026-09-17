@@ -16,7 +16,6 @@ Purpose:
 
 import os
 import cv2
-import json
 import time
 from datetime import datetime
 from typing import List, Dict, Any, Union, Optional
