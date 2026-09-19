@@ -1,19 +1,19 @@
 import type { CheckStatus, DeclarationStatus, InspectionStatus } from "@/lib/api";
 
 const toneClasses: Record<string, string> = {
-  PASSED: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  FAILED: "bg-rose-500/15 text-rose-300 ring-rose-500/30",
-  REVIEW: "bg-amber-500/15 text-amber-300 ring-amber-500/30",
-  NOT_APPLICABLE: "bg-slate-500/15 text-slate-400 ring-slate-500/30",
-  DETECTED: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  NOT_DETECTED: "bg-slate-500/15 text-slate-400 ring-slate-500/30",
-  UNCERTAIN: "bg-amber-500/15 text-amber-300 ring-amber-500/30",
-  DRAFT: "bg-slate-500/15 text-slate-400 ring-slate-500/30",
-  PROCESSING: "bg-sky-500/15 text-sky-300 ring-sky-500/30",
-  COMPLETED: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/30",
-  CRITICAL: "bg-rose-500/15 text-rose-300 ring-rose-500/30",
-  MAJOR: "bg-orange-500/15 text-orange-300 ring-orange-500/30",
-  WARNING: "bg-amber-500/15 text-amber-300 ring-amber-500/30",
+  PASSED: "bg-[#e7f2ea] text-[#1a7a3c] ring-[#1a7a3c]/40",
+  FAILED: "bg-[#fbeaea] text-[#a02c2c] ring-[#a02c2c]/40",
+  REVIEW: "bg-[#fdf3e4] text-[#b26a08] ring-[#b26a08]/40",
+  NOT_APPLICABLE: "bg-[#eef1f6] text-[#5b6472] ring-[#5b6472]/30",
+  DETECTED: "bg-[#e7f2ea] text-[#1a7a3c] ring-[#1a7a3c]/40",
+  NOT_DETECTED: "bg-[#eef1f6] text-[#5b6472] ring-[#5b6472]/30",
+  UNCERTAIN: "bg-[#fdf3e4] text-[#b26a08] ring-[#b26a08]/40",
+  DRAFT: "bg-[#eef1f6] text-[#5b6472] ring-[#5b6472]/30",
+  PROCESSING: "bg-[#e8eefb] text-[#1e4f9c] ring-[#1e4f9c]/40",
+  COMPLETED: "bg-[#e7f2ea] text-[#1a7a3c] ring-[#1a7a3c]/40",
+  CRITICAL: "bg-[#fbeaea] text-[#a02c2c] ring-[#a02c2c]/40",
+  MAJOR: "bg-[#fdf3e4] text-[#b26a08] ring-[#b26a08]/40",
+  WARNING: "bg-[#fdf3e4] text-[#b26a08] ring-[#b26a08]/40",
 };
 
 const labels: Record<string, string> = {
@@ -26,17 +26,11 @@ const labels: Record<string, string> = {
   DETECTED: "Detected",
 };
 
-export function Badge({
-  value,
-  label,
-}: {
-  value: string;
-  label?: string;
-}) {
-  const tone = toneClasses[value] ?? "bg-slate-500/15 text-slate-300 ring-slate-500/30";
+export function Badge({ value, label }: { value: string; label?: string }) {
+  const tone = toneClasses[value] ?? "bg-[#eef1f6] text-[#0f2a52] ring-[#5b6472]/30";
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ring-1 ring-inset whitespace-nowrap ${tone}`}
+      className={`inline-flex items-center rounded-sm px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ring-1 ring-inset whitespace-nowrap ${tone}`}
     >
       {label ?? labels[value] ?? value}
     </span>

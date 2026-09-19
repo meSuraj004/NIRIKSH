@@ -21,41 +21,30 @@ export default function DashboardPage() {
 
   const count = (s: string) => inspections?.filter((i) => i.status === s).length ?? 0;
   const stats = [
-    { label: "Total inspections", value: inspections?.length ?? 0, accent: "text-white" },
-    { label: "Completed", value: count("COMPLETED"), accent: "text-emerald-300" },
-    { label: "Processing", value: count("PROCESSING"), accent: "text-sky-300" },
-    { label: "Needs attention", value: count("FAILED"), accent: "text-rose-300" },
+    { label: "Total inspections", value: inspections?.length ?? 0 },
+    { label: "Completed", value: count("COMPLETED") },
+    { label: "Processing", value: count("PROCESSING") },
+    { label: "Needs attention", value: count("FAILED") },
   ];
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Packaged commodity inspections under LMPC Rules, 2011
-          </p>
-        </div>
-        <Link
-          href="/inspections/new"
-          className="rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500"
-        >
-          + New Inspection
-        </Link>
+      <div className="border-b-4 border-[#e87722] pb-4">
+        <h1 className="font-serif text-2xl font-bold text-[#0f2a52]">Enforcement Dashboard</h1>
+        <p className="mt-1 text-sm text-slate-600">
+          Packaged commodity inspections under the Legal Metrology (Packaged Commodities) Rules, 2011
+        </p>
       </div>
 
       {error && (
-        <p className="rounded-lg bg-rose-500/10 px-4 py-3 text-sm text-rose-300">{error}</p>
+        <p className="border border-[#a02c2c]/30 bg-[#fbeaea] px-4 py-3 text-sm text-[#a02c2c]">{error}</p>
       )}
 
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map((s) => (
-          <div
-            key={s.label}
-            className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5"
-          >
-            <div className={`text-3xl font-semibold ${s.accent}`}>{s.value}</div>
-            <div className="mt-1 text-sm text-slate-400">{s.label}</div>
+          <div key={s.label} className="border border-[#d7dde6] bg-white p-5 shadow-sm">
+            <div className="font-serif text-3xl font-bold text-[#0f2a52]">{s.value}</div>
+            <div className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">{s.label}</div>
           </div>
         ))}
       </div>
@@ -63,32 +52,30 @@ export default function DashboardPage() {
       <section className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">
-              Recent inspections
-            </h2>
-            <Link href="/inspections" className="text-sm text-indigo-400 hover:text-indigo-300">
+            <h2 className="font-serif text-lg font-bold text-[#0f2a52]">Recent Inspections</h2>
+            <Link href="/inspections" className="text-sm font-medium text-[#1e4f9c] hover:underline">
               View all →
             </Link>
           </div>
           {inspections === null ? (
             <p className="text-sm text-slate-500">Loading…</p>
           ) : inspections.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-slate-800 p-10 text-center">
-              <p className="text-sm text-slate-400">No inspections yet.</p>
+            <div className="border border-dashed border-[#c9d1de] bg-white p-10 text-center">
+              <p className="text-sm text-slate-600">No inspections recorded yet.</p>
               <Link
                 href="/inspections/new"
-                className="mt-3 inline-block text-sm font-medium text-indigo-400 hover:text-indigo-300"
+                className="mt-3 inline-block bg-[#0f2a52] px-4 py-2 text-sm font-semibold text-white hover:bg-[#12294a]"
               >
-                Create your first inspection →
+                Create your first inspection
               </Link>
             </div>
           ) : (
-            <ul className="divide-y divide-slate-800 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60">
+            <ul className="divide-y divide-[#e3e8ef] border border-[#d7dde6] bg-white shadow-sm">
               {inspections.slice(0, 6).map((i) => (
                 <li key={i.id}>
                   <Link
                     href={`/inspections/${i.id}`}
-                    className="flex items-center gap-4 px-5 py-4 transition hover:bg-slate-800/40"
+                    className="flex items-center gap-4 px-5 py-3.5 transition hover:bg-[#f4f6f9]"
                   >
                     <span className="font-mono text-sm text-slate-500">
                       #{String(i.id).padStart(4, "0")}
@@ -105,16 +92,16 @@ export default function DashboardPage() {
         </div>
 
         <div>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-400">
-            Active rulebook
-          </h2>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-            <div className="text-3xl font-semibold text-white">{rules.length}</div>
-            <div className="mt-1 text-sm text-slate-400">Statutory rules loaded</div>
-            <ul className="mt-4 space-y-2">
+          <h2 className="mb-3 font-serif text-lg font-bold text-[#0f2a52]">Active Rulebook</h2>
+          <div className="border border-[#d7dde6] bg-white p-5 shadow-sm">
+            <div className="font-serif text-3xl font-bold text-[#0f2a52]">{rules.length}</div>
+            <div className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">
+              Statutory rules loaded
+            </div>
+            <ul className="mt-4 space-y-2 border-t border-[#e3e8ef] pt-4">
               {rules.slice(0, 5).map((r) => (
-                <li key={r.id} className="text-sm text-slate-300">
-                  <span className="text-slate-500">{r.section_reference}</span> — {r.title}
+                <li key={r.id} className="text-sm text-slate-700">
+                  <span className="font-medium text-[#1e4f9c]">{r.section_reference}</span> — {r.title}
                 </li>
               ))}
             </ul>

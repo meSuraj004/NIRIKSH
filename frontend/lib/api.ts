@@ -195,3 +195,25 @@ export const inspectionApi = {
 export const rulesApi = {
   list: () => api<Rule[]>("/api/rules"),
 };
+
+export const reportsApi = {
+  generate: (inspectionId: number, format: "pdf" | "docx") =>
+    api<{ id: number; inspection_id: number; format: string; download_url: string }>(
+      `/api/reports/generate/${inspectionId}/${format}`,
+      { method: "POST" },
+    ),
+  async download(downloadUrl: string, filename: string): Promise<void> {
+    const token = getToken();
+    const res = await fetch(`${API_URL}${downloadUrl}`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (!res.ok) throw new ApiError(res.status, "Report download failed");
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  },
+};

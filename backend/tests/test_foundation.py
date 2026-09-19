@@ -56,9 +56,10 @@ class TestAuth:
 
 class TestApiKeyHandling:
     def test_no_groq_key_configured_means_empty_pool(self):
-        with patch.dict(os.environ, {"GROQ_API_KEYS": ""}, clear=False):
-            from app.ai.ocr.key_manager import GroqKeyManager
+        from app.ai.ocr.key_manager import GroqKeyManager
+        from app.config import settings
 
+        with patch.object(settings, "groq_api_keys", []):
             manager = GroqKeyManager()
             assert manager.keys == []
 

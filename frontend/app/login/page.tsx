@@ -35,91 +35,103 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
-      <div className="w-full max-w-sm">
-        <div className="mb-8 text-center">
-          <span className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 text-xl font-bold text-white">
-            N
-          </span>
-          <h1 className="text-2xl font-semibold tracking-tight text-white">NIRIKSH</h1>
-          <p className="mt-1 text-sm text-slate-400">
-            Legal Metrology compliance inspections
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl">
-          <div className="mb-6 grid grid-cols-2 gap-1 rounded-lg bg-slate-800/60 p-1">
-            {(["login", "signup"] as const).map((m) => (
-              <button
-                key={m}
-                onClick={() => {
-                  setMode(m);
-                  setError(null);
-                }}
-                className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${
-                  mode === m ? "bg-indigo-600 text-white" : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                {m === "login" ? "Sign in" : "Create account"}
-              </button>
-            ))}
+    <div className="flex min-h-screen flex-col bg-[#f4f6f9]">
+      <div className="flex h-1.5">
+        <div className="flex-1 bg-[#e87722]" />
+        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-[#1a7a3c]" />
+      </div>
+      <div className="flex flex-1 items-center justify-center px-4 py-10">
+        <div className="w-full max-w-md">
+          <div className="mb-8 text-center">
+            <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center border-2 border-[#e87722] bg-[#0f2a52] font-serif text-2xl font-bold text-white">
+              N
+            </span>
+            <h1 className="font-serif text-3xl font-bold tracking-wide text-[#0f2a52]">NIRIKSH</h1>
+            <p className="mt-1 text-sm uppercase tracking-widest text-slate-500">
+              Legal Metrology Compliance System
+            </p>
+            <p className="mx-auto mt-3 max-w-sm text-xs leading-relaxed text-slate-500">
+              Enforcement support platform for the Legal Metrology (Packaged Commodities) Rules, 2011
+            </p>
           </div>
 
-          <form onSubmit={submit} className="space-y-4">
-            {mode === "signup" && (
+          <div className="border border-[#d7dde6] bg-white p-7 shadow-sm">
+            <div className="mb-6 grid grid-cols-2 border border-[#d7dde6]">
+              {(["login", "signup"] as const).map((m) => (
+                <button
+                  key={m}
+                  onClick={() => {
+                    setMode(m);
+                    setError(null);
+                  }}
+                  className={`px-3 py-2 text-sm font-semibold transition ${
+                    mode === m
+                      ? "bg-[#0f2a52] text-white"
+                      : "bg-white text-slate-600 hover:bg-[#f4f6f9]"
+                  }`}
+                >
+                  {m === "login" ? "Sign in" : "Create account"}
+                </button>
+              ))}
+            </div>
+
+            <form onSubmit={submit} className="space-y-4">
+              {mode === "signup" && (
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[#0f2a52]">Full name</label>
+                  <input
+                    required
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="w-full border border-[#c9d1de] px-3 py-2 text-sm outline-none focus:border-[#1e4f9c] focus:ring-1 focus:ring-[#1e4f9c]"
+                    placeholder="Officer name"
+                  />
+                </div>
+              )}
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-300">
-                  Full name
-                </label>
+                <label className="mb-1.5 block text-sm font-semibold text-[#0f2a52]">Email</label>
                 <input
                   required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-sm text-white placeholder-slate-500 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                  placeholder="Officer name"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border border-[#c9d1de] px-3 py-2 text-sm outline-none focus:border-[#1e4f9c] focus:ring-1 focus:ring-[#1e4f9c]"
+                  placeholder="officer@example.gov.in"
                 />
               </div>
-            )}
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-300">Email</label>
-              <input
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-sm text-white placeholder-slate-500 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                placeholder="officer@example.gov.in"
-              />
-            </div>
-            <div>
-              <label className="mb-1.5 block text-sm font-medium text-slate-300">Password</label>
-              <input
-                required
-                type="password"
-                minLength={8}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-sm text-white placeholder-slate-500 outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
-                placeholder="••••••••"
-              />
-            </div>
+              <div>
+                <label className="mb-1.5 block text-sm font-semibold text-[#0f2a52]">Password</label>
+                <input
+                  required
+                  type="password"
+                  minLength={8}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full border border-[#c9d1de] px-3 py-2 text-sm outline-none focus:border-[#1e4f9c] focus:ring-1 focus:ring-[#1e4f9c]"
+                  placeholder="••••••••"
+                />
+              </div>
 
-            {error && (
-              <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{error}</p>
-            )}
+              {error && (
+                <p className="border border-[#a02c2c]/30 bg-[#fbeaea] px-3 py-2 text-sm text-[#a02c2c]">
+                  {error}
+                </p>
+              )}
 
-            <button
-              type="submit"
-              disabled={busy}
-              className="w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:opacity-50"
-            >
-              {busy ? "Please wait…" : mode === "login" ? "Sign in" : "Create account & sign in"}
-            </button>
-          </form>
+              <button
+                type="submit"
+                disabled={busy}
+                className="w-full bg-[#0f2a52] px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-[#12294a] disabled:opacity-50"
+              >
+                {busy ? "Please wait…" : mode === "login" ? "Sign in" : "Create account & sign in"}
+              </button>
+            </form>
+          </div>
+          <p className="mt-4 text-center text-xs text-slate-500">
+            The first registered account becomes the system administrator
+          </p>
         </div>
-        <p className="mt-4 text-center text-xs text-slate-600">
-          First registered account becomes ADMIN
-        </p>
       </div>
     </div>
   );
