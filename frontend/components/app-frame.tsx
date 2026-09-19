@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { getToken, authApi, type User } from "@/lib/api";
@@ -14,17 +14,28 @@ const navItems = [
 export default function AppFrame({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
+  const [ready, setReady] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    if (!getToken()) router.replace("/login");
+    const init = setTimeout(() => {
+      let cached: User | null = null;
+      try {
+        cached = JSON.parse(window.localStorage.getItem("niriksh_user") || "null");
+      } catch {}
+      setUser(cached);
+      if (!getToken()) {
+        router.replace("/login");
+        return;
+      }
+      setReady(true);
+    }, 0);
+    return () => clearTimeout(init);
   }, [router]);
 
-  if (!getToken()) return null;
-
-  let user: User | null = null;
-  try {
-    user = JSON.parse(window.localStorage.getItem("niriksh_user") || "null");
-  } catch {}
+  if (!ready) {
+    return <div className="min-h-screen bg-[#f4f6f9]" />;
+  }
 
   return (
     <div className="min-h-screen bg-[#f4f6f9] text-slate-900">
@@ -87,7 +98,8 @@ export default function AppFrame({ children }: { children: React.ReactNode }) {
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">{children}</main>
       <footer className="border-t border-[#d7dde6] bg-white py-4">
         <p className="text-center text-xs text-[#5b6472]">
-          NIRIKSH · Enforcement support under the Legal Metrology (Packaged Commodities) Rules, 2011
+          NIRIKSH &middot; Enforcement support under the Legal Metrology (Packaged Commodities)
+          Rules, 2011
         </p>
       </footer>
     </div>
